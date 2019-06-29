@@ -1,0 +1,1 @@
+gcc Visualisation/main.c Visualisation/setters.c Visualisation/room_utils.c Visualisation/parser.c Visualisation/display.c Visualisation/hooker.c Visualisation/draw_line.c Visualisation/moveble.c Visualisation/scaleble.c -L libft/ -lft -lmlx -framework OpenGL -framework AppKit -I libft/includes
