@@ -6,7 +6,7 @@
 /*   By: jschille <jschille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 17:11:11 by jschille          #+#    #+#             */
-/*   Updated: 2019/06/29 21:33:27 by jschille         ###   ########.fr       */
+/*   Updated: 2019/07/03 08:06:27 by jschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct	s_room
 typedef struct	s_ant
 {
 	t_unint	name;
-	t_room 	*room;
+	t_room	*room;
 }				t_ant;
 
 typedef struct	s_env
@@ -109,9 +109,17 @@ void			move_up(t_mlx *img, t_env *env);
 void			move_down(t_mlx *img, t_env *env);
 void			move_img(t_mlx *img, t_env *env, int x, int y);
 
-int			key_press(int keycode, t_mlx *img);
-int			mouse_move(int x, int y, t_mlx *img);
-int			mouse_pres(int btn, int x,int y, t_mlx *img);
-int			mouse_releas(int btn, int x,int y, t_mlx *img);
+int				key_press(int keycode, t_mlx *img);
+int				mouse_move(int x, int y, t_mlx *img);
+int				mouse_pres(int btn, int x, int y, t_mlx *img);
+int				mouse_releas(int btn, int x, int y, t_mlx *img);
+
+int				clean(t_mlx *mlx);
+int				clean_env(t_env *env);
+void			destroy(t_mlx *mlx);
+void			re_draw(t_mlx *mlx);
+void			do_it(int keycode, t_mlx *img, t_env *env);
+
+void			set_extrem(t_mlx *mlx, int	*max_min);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jschille <jschille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 14:48:39 by jschille          #+#    #+#             */
-/*   Updated: 2019/06/29 16:02:28 by jschille         ###   ########.fr       */
+/*   Updated: 2019/07/03 07:59:22 by jschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,34 @@ static void	set_color(t_env *env, char **path)
 	}
 }
 
-void	next_step(t_mlx *img, t_env *env)
+void		set_lants(t_env **env)
+{
+	t_unint	i;
+	t_ant	*ant;
+
+	i = 0;
+	while (i < (*env)->ants)
+	{
+		if (!(ant = (t_ant*)malloc(sizeof(t_ant))))
+			err_out(3, NULL, *env);
+		ant->name = i + 1;
+		ant->room = (t_room*)(*env)->start->content;
+		ft_lstadd(&(*env)->lants, ft_lstnew(ant, sizeof(*ant)));
+		++i;
+	}
+}
+
+void		next_step(t_mlx *img, t_env *env)
 {
 	char	**split;
 	int		i;
 
 	get_next_line(0, &(img->line));
 	if (!img->line || !*img->line)
-		err_out(2, img->line, env);
+	{
+		clean(img);
+		err_out(-1, NULL, env);
+	}
 	split = ft_strsplit(img->line, ' ');
 	i = 0;
 	set_color(env, split);

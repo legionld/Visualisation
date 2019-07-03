@@ -6,29 +6,12 @@
 /*   By: jschille <jschille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 16:22:55 by jschille          #+#    #+#             */
-/*   Updated: 2019/06/29 14:43:56 by jschille         ###   ########.fr       */
+/*   Updated: 2019/07/03 07:59:10 by jschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "visual.h"
-
-void		set_lants(t_env **env)
-{
-	t_unint	i;
-	t_ant	*ant;
-
-	i = 0;
-	while (i < (*env)->ants)
-	{
-		if (!(ant = (t_ant*)malloc(sizeof(t_ant))))
-			err_out(3, NULL, *env);
-		ant->name = i + 1;
-		ant->room = (t_room*)(*env)->start->content;
-		ft_lstadd(&(*env)->lants, ft_lstnew(ant, sizeof(*ant)));
-		++i;
-	}
-}
 
 void		set_ants(char *line, t_env **env)
 {

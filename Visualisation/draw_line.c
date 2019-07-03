@@ -6,7 +6,7 @@
 /*   By: jschille <jschille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 20:44:07 by jschille          #+#    #+#             */
-/*   Updated: 2019/06/25 11:14:13 by jschille         ###   ########.fr       */
+/*   Updated: 2019/07/03 08:04:57 by jschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,21 @@ void			draw_line(t_unint *data, t_point a, t_point b)
 			a.y += delta[3];
 		}
 	}
+}
+
+void	set_extrem(t_mlx *mlx, int	*max_min)
+{
+	float	max_y;
+	float	max_x;
+
+	max_y = max_min[2] - max_min[0];
+	max_x = max_min[3] - max_min[1];
+	max_y < 0 ? max_y *= -1 : max_y;
+	max_x < 0 ? max_x *= -1 : max_x;
+	if (max_y > max_x)
+		mlx->scale = (WIDTH - WIDTH / 2) / (max_y);
+	else
+		mlx->scale = (HIGHT - HIGHT / 2) / (max_x);
+	mlx->half_x = WIDTH / 2;
+	mlx->half_y = HIGHT / 2;
 }

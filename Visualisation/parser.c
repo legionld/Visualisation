@@ -6,7 +6,7 @@
 /*   By: jschille <jschille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:50:45 by jschille          #+#    #+#             */
-/*   Updated: 2019/06/25 11:14:26 by jschille         ###   ########.fr       */
+/*   Updated: 2019/07/03 07:56:05 by jschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void			err_out(int e, char *line, t_env *env)
 {
-	printf("err_out enter\n");
 	(line) ? free(line) : 0;
 	if (e == 0)
 		write(2, "Error! Don't have memory\n", 25);
@@ -27,8 +26,10 @@ void			err_out(int e, char *line, t_env *env)
 		write(2, "Error! Numbers of ants have invalid symbol\n", 43);
 	if (e == 4)
 		write(2, "Error! Dublicate Start/End\n", 27);
-	if (e == 4)
+	if (e == 5)
 		write(2, "Error! Bad symbol\n", 18);
+	if (e == -1)
+		exit(clean_env(env));
 	return (ft_error(env));
 }
 
@@ -77,6 +78,7 @@ t_env			*env_init(void)
 	env->start = NULL;
 	env->end = NULL;
 	env->list = NULL;
+	env->lants = NULL;
 	return (env);
 }
 
