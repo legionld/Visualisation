@@ -6,7 +6,7 @@
 /*   By: jschille <jschille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 21:36:08 by jschille          #+#    #+#             */
-/*   Updated: 2019/07/03 08:05:59 by jschille         ###   ########.fr       */
+/*   Updated: 2019/07/03 19:12:47 by jschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,12 @@ void	set_mid(t_mlx *mlx, t_env *env)
 	lst = env->list;
 	max_min[0] = ((t_room*)lst->content)->coords[1];
 	max_min[1] = ((t_room*)lst->content)->coords[0];
+	max_min[2] = ((t_room*)lst->content)->coords[1];
+	max_min[3] = ((t_room*)lst->content)->coords[0];
 	while (lst)
 	{
-		if (((t_room*)lst->content)->coords[0] > max_min[1])
-			max_min[1] = ((t_room*)lst->content)->coords[0];
-		if (((t_room*)lst->content)->coords[1] > max_min[0])
-			max_min[0] = ((t_room*)lst->content)->coords[1];
-		// if (((t_room*)lst->content)->coords[0] < max_min[3])
-		// 	max_min[3] = ((t_room*)lst->content)->coords[0];
-		// if (((t_room*)lst->content)->coords[1] < max_min[2])
-		// 	max_min[2] = ((t_room*)lst->content)->coords[1];
+		set_arr(((t_room*)lst->content)->coords[0],
+				((t_room*)lst->content)->coords[1], max_min);
 		tmp = ((t_room*)env->list->content)->links;
 		lst = lst->next;
 	}

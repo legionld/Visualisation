@@ -6,7 +6,7 @@
 /*   By: jschille <jschille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 17:11:11 by jschille          #+#    #+#             */
-/*   Updated: 2019/07/03 08:06:27 by jschille         ###   ########.fr       */
+/*   Updated: 2019/07/03 19:13:55 by jschille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,6 @@ void			re_draw(t_mlx *mlx);
 void			do_it(int keycode, t_mlx *img, t_env *env);
 
 void			set_extrem(t_mlx *mlx, int	*max_min);
+void			set_arr(int x, int y, int *max_min);
 
 #endif
